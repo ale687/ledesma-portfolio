@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .models import Project
 from django.core.mail import send_mail
 from django.conf import settings
+from django.shortcuts import render
+
 
 
 def home(request):
@@ -11,9 +13,27 @@ def about(request):
     return render(request, 'portfolio/about.html')
 
 def projects(request):
-    projects = Project.objects.all()
-    return render(request, 'portfolio/projects.html', {'projects': projects})
-
+    db_projects = Project.objects.all()
+    
+    fallback_projects = [
+        {
+        'title': 'To-Do App',
+        'description': 'A simple Streamlit to-do app to add, manage, and track task.',
+        'image_static': 'portfolio/assets/img/projects/To-do_App.png',
+        'url': 'https://ale687-my-todo-app-web-1p4c95.streamlit.app/'
+        },
+        {
+            'title': 'Weather App',
+            'description': 'Weather forecast dashboard built with Streamlit and OpenWeather Api.',
+            'image_static': 'portfolio/assets/img/projects/Weather_App.png',
+            'url': 'https://weather-forecast-data.streamlit.app/'
+        },
+    ]
+    
+    projects_to_show = db_projects if db_projects.exists() else fallback_projects
+    
+    return render(request, 'portfolio/projects.html', {'projects': projects_to_show})
+    
 def contact(request):
     succes = False
     

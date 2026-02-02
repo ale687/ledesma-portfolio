@@ -10,12 +10,23 @@
 
     <div class="work__container bd-grid">
         
-        {% for project in projects %}
-        <a href="{{ project.url }}" class="work__img" target="_blank" rel="noreferrer">
-            <img src="{{ project.image.url }}" alt="{{ project.title }}">
+        {% for p in projects %}
+        <a href="{% if p.url %}{{ p.url }}{% endif %}#{{ endif }}" class="work__img" target="_blank" rel="noreferrer">
+            
+            
+            {% if p.image %}
+                <!-- Project BD -->
+                <img src="{{ p.image.url }}" alt="{{ p.title }}">
+            {% else %}
+
+                <!-- Project fallback-->
+                <img src="{% static p.image_static %}" alt="{{ p.title }}">
+
+            {% endif %}
+
             <div class="work__overlay">
-                <h3 class="work__title">{{ project.title }}</h3>
-                <p class="work__description">{{ project.description }}</p>
+                <h3 class="work__title">{{ p.title }}</h3>
+                <p class="work__description">{{ p.description }}</p>
             </div>
         </a>    
         {% endfor %}
