@@ -1,6 +1,8 @@
 # Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
 # Virtual env
 venv/
@@ -14,6 +16,11 @@ venv/
 
 /media/
 
-# Personal images (temporary)
-portfolio/static/portfolio/assets/img/perfil.png
-portfolio/static/portfolio/assets/img/about.jpg
+staticfiles/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
