@@ -11,10 +11,13 @@
 
     <div class="contact__container bd-grid">
 
-        {% if success %}
-        <p style="color:green"; font-weight: 600; text-align: center;>
-            Message sent successfully! 
-        </p>        
+         {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" 
+                style="color:green; font-weight: 600; text-align: center;">
+                {{ message }}
+                </div>
+            {% endfor %}      
         {% endif %}
 
         <form method="post" class="contact__form">

@@ -16,17 +16,23 @@ def projects(request):
     
     fallback_projects = [
         {
+        'title': 'PDF Data Extractor',
+        'description': 'Python application that extracts structured data from PDF files using PyMuPDF and Tabula.',
+        'image_static': 'portfolio/assets/img/projects/pdf_data_extractor.png',
+        'url': 'https://github.com/ale687/pdf-data-extractor'
+        },
+        {
+        'title': 'Weather App',
+        'description': 'Weather forecast dashboard built with Streamlit and OpenWeather Api.',
+        'image_static': 'portfolio/assets/img/projects/Weather_App.png',
+        'url': 'https://weather-forecast-data.streamlit.app/'
+        },
+        {
         'title': 'To-Do App',
         'description': 'A simple Streamlit to-do app to add, manage, and track task.',
         'image_static': 'portfolio/assets/img/projects/To-do_App.png',
         'url': 'https://ale687-my-todo-app-web-1p4c95.streamlit.app/'
-        },
-        {
-            'title': 'Weather App',
-            'description': 'Weather forecast dashboard built with Streamlit and OpenWeather Api.',
-            'image_static': 'portfolio/assets/img/projects/Weather_App.png',
-            'url': 'https://weather-forecast-data.streamlit.app/'
-        },
+        }, 
     ]
     
     projects_to_show = db_projects if db_projects.exists() else fallback_projects
@@ -76,9 +82,6 @@ def contact(request):
             json=payload,
             timeout=10,
         )
-
-        print("SENDGRID STATUS:", r.status_code)
-        print("SENDGRID RESPONSE:", r.text)
 
         if 200 <= r.status_code < 300:
             messages.success(request, "Message sent successfully!")
