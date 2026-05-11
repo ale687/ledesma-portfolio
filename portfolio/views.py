@@ -18,7 +18,7 @@ def projects(request):
         {
           'title': 'Football Data Dashboard',
           'description': 'ETL pipeline with Python, SQLite, FastAPI and a dashboard for football match analytics.',
-          'image_static': 'portfolio/assets/img/projects/football _data_dashboard.png',
+          'image_static': 'portfolio/assets/img/projects/football_data_dashboard.png',
           'url': 'https://github.com/ale687/football_data_pipeline'  
         },
         {
