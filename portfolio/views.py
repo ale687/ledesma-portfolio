@@ -16,6 +16,12 @@ def projects(request):
     
     fallback_projects = [
         {
+          'title': 'Football Data Dashboard',
+          'description': 'ETL pipeline with Python, SQLite, FastAPI and a dashboard for football match analytics.',
+          'image_static': 'portfolio/assets/img/projects/football _data_dashboard.png',
+          'url': 'https://github.com/ale687/football_data_pipeline'  
+        },
+        {
         'title': 'PDF Data Extractor',
         'description': 'Python application that extracts structured data from PDF files using PyMuPDF and Tabula.',
         'image_static': 'portfolio/assets/img/projects/pdf_data_extractor.png',
