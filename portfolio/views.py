@@ -1,8 +1,8 @@
-import os
-import requests
 from django.shortcuts import render, redirect
 from .models import Project
 from django.contrib import messages
+from django.conf import settings
+from django.core.mail import EmailMessage
 
 
 def home(request):
@@ -53,51 +53,27 @@ def contact(request):
     email = request.POST.get("email", "").strip()
     message = request.POST.get("message", "").strip()
 
-    api_key = os.getenv("SENDGRID_API_KEY")
-    to_email = os.getenv("CONTACT_TO_EMAIL")
-    from_email = os.getenv("SENDGRID_FROM_EMAIL", to_email) 
-
-    if not api_key or not to_email or not from_email:
-        messages.error(request, "Email service not configured.")
-        return redirect("contact")
-
     if not name or not email or not message:
         messages.error(request, "Please complete all fields.")
         return redirect("contact")
 
-    payload = {
-        "personalizations": [{"to": [{"email": to_email}]}],
-        "from": {"email": from_email},
-        "reply_to": {"email": email},
-        "subject": f"Portfolio Contact — {name}",
-        "content": [
-            {
-                "type": "text/plain",
-                "value": f"Name: {name}\nEmail: {email}\n\n{message}",
-            }
-        ],
-    }
+    email_message = EmailMessage(
+        subject=f"Portfolio Contact — {name}",
+        body=(
+            f"Name: {name}\n"
+            f"Email: {email}\n\n"
+            f"Message:\n{message}"
+        ),
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[settings.CONTACT_TO_EMAIL],
+        reply_to=[email],
+    )
 
     try:
-        r = requests.post(
-            "https://api.sendgrid.com/v3/mail/send",
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-            },
-            json=payload,
-            timeout=10,
-        )
-
-        if 200 <= r.status_code < 300:
-            messages.success(request, "Message sent successfully!")
-        else:
-            messages.error(request, "SendGrid rejected the request.")
+        email_message.send(fail_silently=False)
+        messages.success(request, "Message sent successfully!")
     except Exception as e:
-        print("SENDGRID EXCEPTION:", str(e))
+        print("EMAIL EXCEPTION:", str(e))
         messages.error(request, "Could not send message right now.")
 
     return redirect("contact")
-
-
-  
