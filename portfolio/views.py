@@ -45,6 +45,9 @@ def projects(request):
     
     return render(request, 'portfolio/projects.html', {'projects': projects_to_show})
 
+def certifications(request):
+    return render(request, "portfolio/certifications.html")
+
 def contact(request):
     if request.method == "GET":
         return render(request, "portfolio/contact.html")
