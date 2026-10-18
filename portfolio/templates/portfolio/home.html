@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}Home - Portfolio{% endblock %}
+{% block title %}Claudio Ledesma | Python Backend Developer{% endblock %}
 
 {% block content %}
 
@@ -10,16 +10,18 @@
   <!--===== HOME =====-->
   <section class="home bd-grid" id="home">
     <div class="home__data">
-      <h1 class="home__title">Hi,<br>I'am <span class="home__title-color">Claudio</span><br>Python Developer</h1>
+      <p class="home__eyebrow">PYTHON · BACKEND · DATA</p>
+      <h1 class="home__title">Hi, I'm <span class="home__title-color">Claudio</span><br>Backend Developer</h1>
+      <p class="home__description">I build APIs and data pipelines with Python, Django, FastAPI and SQL, turning raw data into useful applications.</p>
   
-      <a href="{% url 'contact' %}" class="button">Contact</a>
-      <a href="{% static 'portfolio/assets/cv/CV_Claudio_Ledesma.pdf' %}" class="button button--ghost" target="_blank">Download CV</a>
+      <a href="{% url 'projects' %}" class="button">View projects</a>
+      <a href="{% static 'portfolio/assets/cv/CV_Claudio_Ledesma.pdf' %}?v=20261018" class="button button--ghost" download="Claudio_Ledesma_CV.pdf">Download CV</a>
     </div>
   
     <div class="home__social">
-      <a href="https://www.linkedin.com/in/claudio-alejandro-ledesma-48b65a365/" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
-      <a href="https://github.com/ale687" class="home__social-icon"><i class='bx bxl-github'></i></a>
-      <a href="mailto:clledesma@frba.utn.edu.ar" class="home__social-icon"><i class='bx bx-envelope'></i></a>
+      <a href="https://www.linkedin.com/in/claudio-alejandro-ledesma-48b65a365/" class="home__social-icon" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+      <a href="https://github.com/ale687" class="home__social-icon" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+      <a href="mailto:clledesma@frba.utn.edu.ar" class="home__social-icon" aria-label="Email Claudio"><i class='bx bx-envelope'></i></a>
     </div>
   
     <div class="home__img">
@@ -35,6 +37,31 @@
           <image class="home__blob-img" x="50" y="60" href="{% static 'portfolio/assets/img/home.png' %}" />
         </g>
       </svg>
+    </div>
+  </section>
+
+  <section class="section featured bd-grid" aria-labelledby="featured-title">
+    <h2 id="featured-title">Selected projects</h2>
+    <p class="featured__intro">Explore my work with APIs, data processing and Python applications.</p>
+    <div class="featured__grid">
+      <article class="project-card">
+        <img src="{% static 'portfolio/assets/img/projects/football_data_dashboard.png' %}" alt="Football analytics dashboard" loading="lazy">
+        <div class="project-card__body">
+          <p class="project-card__stack">Python · SQLite · FastAPI</p>
+          <h3>Football Data Dashboard</h3>
+          <p>An ETL pipeline and dashboard for exploring football match data, connecting data processing with an API and analytics.</p>
+          <a class="project-card__link" href="https://github.com/ale687/football_data_pipeline" target="_blank" rel="noopener noreferrer">View code <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+      <article class="project-card">
+        <img src="{% static 'portfolio/assets/img/projects/pdf_data_extractor.png' %}" alt="PDF data extraction application" loading="lazy">
+        <div class="project-card__body">
+          <p class="project-card__stack">Python · PyMuPDF · Tabula</p>
+          <h3>PDF Data Extractor</h3>
+          <p>A Python application that extracts structured data from PDF files for further processing and analysis.</p>
+          <a class="project-card__link" href="https://github.com/ale687/pdf-data-extractor" target="_blank" rel="noopener noreferrer">View code <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
     </div>
   </section>
 

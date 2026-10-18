@@ -1,31 +1,19 @@
-
 <footer class="footer">
   <div class="footer__container bd-grid">
-
-    <h2 class="footer__title">Claudio Ledesma</h2>
-
-    <div class="footer__social">
-      <a href="https://www.linkedin.com/in/claudio-alejandro-ledesma-48b65a365/"
-         target="_blank" rel="noreferrer"
-         class="footer__icon">
-        <i class='bx bxl-linkedin'></i>
-      </a>
-
-      <a href="https://github.com/ale687"
-         target="_blank" rel="noreferrer"
-         class="footer__icon">
-        <i class='bx bxl-github'></i>
-      </a>
-
-      <a href="mailto:clledesma@frba.utn.edu.ar" 
-          class="footer__icon">
-        <i class='bx bx-envelope'></i>
-      </a>
+    <div class="footer__main">
+      <div class="footer__identity">
+        <a class="footer__title" href="{% url 'home' %}">Claudio Ledesma<span aria-hidden="true">.</span></a>
+        <p class="footer__tagline">Python Backend Developer &amp; Data Engineering</p>
+      </div>
+      <nav class="footer__social" aria-label="Social and contact links">
+        <a href="https://www.linkedin.com/in/claudio-alejandro-ledesma-48b65a365/" target="_blank" rel="noopener noreferrer" class="footer__link"><i class="bx bxl-linkedin" aria-hidden="true"></i><span>LinkedIn</span><span class="sr-only"> (opens in a new tab)</span></a>
+        <a href="https://github.com/ale687" target="_blank" rel="noopener noreferrer" class="footer__link"><i class="bx bxl-github" aria-hidden="true"></i><span>GitHub</span><span class="sr-only"> (opens in a new tab)</span></a>
+        <a href="mailto:clledesma@frba.utn.edu.ar" class="footer__link"><i class="bx bx-envelope" aria-hidden="true"></i><span>Email</span></a>
+      </nav>
     </div>
-
-    <p class="footer__copy">
-      &#169; {{ now|date:"Y" }} Claudio Ledesma. All rights reserved.
-    </p>
-
+    <div class="footer__bottom">
+      <p class="footer__copy">&#169; {% now "Y" %} Claudio Ledesma. All rights reserved.</p>
+      <a class="footer__back" href="#main-content">Back to top <i class="bx bx-up-arrow-alt" aria-hidden="true"></i></a>
+    </div>
   </div>
 </footer>

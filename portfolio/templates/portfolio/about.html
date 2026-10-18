@@ -1,101 +1,70 @@
 {% extends "portfolio/base.html" %}
-
 {% load static %}
-
-{% block title %}About - Portfolio{% endblock %}
-
+{% block title %}About | Claudio Ledesma{% endblock %}
 {% block content %}
-
-<section class="about section " id="about">
-    <h2 class="section-title">About</h2>
-
-    <div class="about__container bd-grid">
-        <div class="about__img">
-            <img src="{% static 'portfolio/assets/img/about-.jpg' %}" alt="About Me">
-        </div>
-
-        <div>
-            <h2 class="about__subtitle">I'am Claudio</h2>
-            <p class="about__text">Backend Developer focused on Python and Data Engineering. I build REST APIs and data-driven applications,
-                working with SQL for queries and relational data modeling. I enjoy turning ideas into clean, maintainable
-                solutions and continuously improving my skills through projects and training.</p>
-        </div>
+<section class="about section" id="about">
+  <h1 class="section-title">About</h1>
+  <div class="about__container bd-grid">
+    <div class="about__img">
+      <img src="{% static 'portfolio/assets/img/claudio-about.jpg' %}" alt="Claudio Ledesma" width="1024" height="1280">
     </div>
-</section>
-
-<section class="skills section" id="skills">
-    <h2 class="section-title">Skills</h2>
-
-    <div class="skills__container bd-grid">
-        <div>
-            <h2 class="skills__subtitle">Technical Skills</h2>
-            <p class="skills__text">Tools and technologies I use to build backend systems and work with data.</p>
-            <div class="skills__data">
-                <div class="skills__names">
-                    <i class='bx bxl-python skills__icon'></i>
-                    <span class="skills__name">Python</span>
-                </div>
-                <div class="skills__bar skills__python">
-
-                </div>
-                <div>
-                    <span class="skills__percentage">85%</span>
-                </div>
-            </div>
-            <div class="skills__data">
-                <div class="skills__names">
-                    <i class='bx bx-server skills__icon'></i>
-                    <span class="skills__name">Django / FastApi</span>
-                </div>
-                <div class="skills__bar skills__backend">
-
-                </div>
-                <div>
-                    <span class="skills__percentage">75%</span>
-                </div>
-            </div>
-            <div class="skills__data">
-                <div class="skills__names">
-                    <i class='bx bx-data skills__icon'></i>
-                    <span class="skills__name">SQL</span>
-                </div>
-                <div class="skills__bar skills__sql">
-
-                </div>
-                <div>
-                    <span class="skills__percentage">70%</span>
-                </div>
-            </div>
-            <div class="skills__data">
-                <div class="skills__names">
-                    <i class='bx bx-line-chart skills__icon'></i>
-                    <span class="skills__name">Pandas</span>
-                </div>
-                <div class="skills__bar skills__pandas">
-
-                </div>
-                <div>
-                    <span class="skills__percentage">70%</span>
-                </div>
-            </div>
-            <div class="skills__data">
-                <div class="skills__names">
-                    <i class='bx bxl-github skills__icon'></i>
-                    <span class="skills__name">Git & GitHub</span>
-                </div>
-                <div class="skills__bar skills__git">
-
-                </div>
-                <div>
-                    <span class="skills__percentage">80%</span>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <img src="{% static 'portfolio/assets/img/work5.jpg' %}" alt="" class="skills__img">
-        </div>
+    <div>
+      <p class="about__eyebrow">Backend development &amp; data engineering</p>
+      <h2 class="about__subtitle">I'm Claudio</h2>
+      <p class="about__text">I build REST APIs and data-driven applications with Python, and use SQL for queries and relational data modeling. My interests connect backend development, data processing and visualization: from collecting data to making it useful.</p>
+      <p class="about__text about__followup">I develop my skills through hands-on projects and training in backend development, data engineering and visualization.</p>
+      <a class="about__link" href="{% url 'projects' %}">See what I've built <span aria-hidden="true">→</span></a>
     </div>
+  </div>
 </section>
-
+<section class="expertise section" id="skills" aria-labelledby="skills-heading">
+  <div class="bd-grid">
+    <details class="expertise__panel" open>
+      <summary class="expertise__heading"><span><i class="bx bx-wrench" aria-hidden="true"></i><span id="skills-heading" role="heading" aria-level="2">Technical Skills</span></span><i class="bx bx-chevron-down expertise__chevron" aria-hidden="true"></i></summary>
+      <div class="expertise__grid">
+        <article class="expertise__card">
+          <h3>Backend Development</h3>
+          <ul class="skill-tags" aria-label="Programming and backend technologies">
+            <li><i class="bx bxl-python" aria-hidden="true"></i>Python</li>
+            <li><i class="bx bxl-django" aria-hidden="true"></i>Django</li>
+            <li><i class="bx bx-server" aria-hidden="true"></i>FastAPI</li>
+            <li><i class="bx bx-transfer" aria-hidden="true"></i>REST APIs</li>
+          </ul>
+        </article>
+        <article class="expertise__card">
+          <h3>Data Processing &amp; ETL</h3>
+          <ul class="skill-tags" aria-label="Data engineering technologies">
+            <li><i class="bx bx-table" aria-hidden="true"></i>Pandas</li>
+            <li><i class="bx bx-transfer-alt" aria-hidden="true"></i>ETL pipelines</li>
+            <li><i class="bx bx-file" aria-hidden="true"></i>PDF extraction</li>
+          </ul>
+        </article>
+        <article class="expertise__card">
+          <h3>Databases &amp; SQL</h3>
+          <ul class="skill-tags" aria-label="Database skills">
+            <li><i class="bx bx-data" aria-hidden="true"></i>SQL</li>
+            <li><i class="bx bx-data" aria-hidden="true"></i>SQLite</li>
+            <li><i class="bx bx-git-branch" aria-hidden="true"></i>Relational modeling</li>
+          </ul>
+        </article>
+        <article class="expertise__card">
+          <h3>Visualization &amp; BI</h3>
+          <ul class="skill-tags" aria-label="Visualization tools">
+            <li><i class="bx bx-bar-chart-alt-2" aria-hidden="true"></i>Tableau</li>
+            <li><i class="bx bx-spreadsheet" aria-hidden="true"></i>Excel</li>
+            <li><i class="bx bx-bar-chart-square" aria-hidden="true"></i>Power BI</li>
+            <li><i class="bx bx-line-chart" aria-hidden="true"></i>Streamlit</li>
+          </ul>
+        </article>
+        <article class="expertise__card">
+          <h3>Development Tools</h3>
+          <ul class="skill-tags" aria-label="Version control tools">
+            <li><i class="bx bx-git-branch" aria-hidden="true"></i>Git</li>
+            <li><i class="bx bxl-github" aria-hidden="true"></i>GitHub</li>
+          </ul>
+        </article>
+      </div>
+    </details>
+  </div>
+</section>
 {% endblock %}

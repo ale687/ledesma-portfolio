@@ -1,36 +1,36 @@
 {% extends "portfolio/base.html" %}
-
-{% load static %}
-
-{% block title %}Contact - Portfolio{% endblock %}
-
+{% block title %}Contact | Claudio Ledesma{% endblock %}
+{% block body_class %}contact-page{% endblock %}
 {% block content %}
-
 <section class="contact section" id="contact">
-    <h2 class="section-title">Contact</h2>
-
-    <div class="contact__container bd-grid">
-
-         {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}" 
-                style="color:green; font-weight: 600; text-align: center;">
-                {{ message }}
-                </div>
-            {% endfor %}      
-        {% endif %}
-
-        <form method="post" class="contact__form">
-            {% csrf_token %}
-
-            <input type="text" name="name" placeholder="Name" class="contact__input" required>
-            <input type="email" name="email" placeholder="Email" class="contact__input" required>
-
-            <textarea name="message" placeholder="Message" rows="10" class="contact__input" required></textarea>
-
-            <button type="submit" class="contact__button button">Send</button>
-        </form>
+  <div class="contact__heading bd-grid">
+    <h1 class="section-title">Contact</h1>
+    <p>Have an opportunity or a project in mind? I'd love to hear from you.</p>
+  </div>
+  <div class="contact__layout bd-grid">
+    <div class="contact__details">
+      <h2>Get in touch</h2>
+      <p>Send a message here, or contact me directly.</p>
+      <a href="mailto:clledesma@frba.utn.edu.ar" class="contact__direct">clledesma@frba.utn.edu.ar</a>
+      <a href="https://www.linkedin.com/in/claudio-alejandro-ledesma-48b65a365/" class="contact__direct" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span aria-hidden="true">→</span></a>
     </div>
+    <div class="contact__form-panel">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}" role="{% if message.tags == 'error' %}alert{% else %}status{% endif %}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+      <form method="post" action="{% url 'contact' %}" class="contact__form">
+        {% csrf_token %}
+        <label for="contact-name">Name</label>
+        <input id="contact-name" type="text" name="name" autocomplete="name" class="contact__input" required>
+        <label for="contact-email">Email</label>
+        <input id="contact-email" type="email" name="email" autocomplete="email" class="contact__input" required>
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" rows="6" class="contact__input" required></textarea>
+        <button type="submit" class="contact__button button">Send message</button>
+      </form>
+    </div>
+  </div>
 </section>
-
 {% endblock %}

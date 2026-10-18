@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#101c36"/>
+  <g font-family="Arial, sans-serif">
+    <text x="64" y="85" fill="#96b5ff" font-size="18" letter-spacing="3">PYTHON / FASTAPI / REQUESTS</text>
+    <text x="64" y="150" fill="#fff" font-size="44" font-weight="700">News Aggregator API</text>
+    <text x="64" y="193" fill="#bac7df" font-size="22">Fetch. Search. Normalize.</text>
+    <rect x="64" y="240" width="832" height="224" rx="16" fill="#192a49" stroke="#3b4963"/>
+    <g font-family="Consolas, monospace" font-size="24">
+      <text x="100" y="301" fill="#86efac">GET <tspan fill="#eef2ff">/health</tspan></text>
+      <text x="100" y="360" fill="#86efac">GET <tspan fill="#eef2ff">/news/top</tspan></text>
+      <text x="100" y="419" fill="#86efac">GET <tspan fill="#eef2ff">/news/search?q=python</tspan></text>
+    </g>
+  </g>
+</svg>

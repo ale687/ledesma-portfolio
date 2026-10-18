@@ -2,33 +2,40 @@
 
 {% load static %}
 
-{% block title %}Projects - Portfolio{% endblock %}
+{% block title %}Projects | Claudio Ledesma{% endblock %}
 
 {% block content %}
 <section class="work section" id="work">
-    <h2 class="section-title">Projects</h2>
+    <h1 class="section-title">Projects</h1>
+    <p class="work__intro">From raw data to useful applications. Explore the tools I've built with Python.</p>
 
     <div class="work__container bd-grid">
         
         {% for p in projects %}
-        <a href="{% if p.url %}{{ p.url }}{% endif %}#{{ endif }}" class="work__img" target="_blank" rel="noreferrer">
+        <article class="project-card">
             
             
             {% if p.image %}
                 <!-- Project BD -->
-                <img src="{{ p.image.url }}" alt="{{ p.title }}">
+                <img src="{{ p.image.url }}" alt="{{ p.title }}" loading="lazy">
             {% else %}
 
                 <!-- Project fallback-->
-                <img src="{% static p.image_static %}" alt="{{ p.title }}">
+                <img src="{% static p.image_static %}" alt="{{ p.title }}" loading="lazy">
 
             {% endif %}
 
-            <div class="work__overlay">
-                <h3 class="work__title">{{ p.title }}</h3>
+            <div class="project-card__body">
+                <h2 class="work__title">{{ p.title }}</h2>
                 <p class="work__description">{{ p.description }}</p>
+                {% if p.technologies %}
+                <ul class="project-card__tags" aria-label="Technologies used in {{ p.title }}">
+                    {% for technology in p.technologies %}<li>{{ technology }}</li>{% endfor %}
+                </ul>
+                {% endif %}
+                {% if p.url %}<a class="project-card__link" href="{{ p.url }}" target="_blank" rel="noopener noreferrer">{% if 'github.com/' in p.url %}View code{% else %}Open demo{% endif %} <span aria-hidden="true">↗</span><span class="sr-only"> for {{ p.title }}</span></a>{% endif %}
             </div>
-        </a>    
+        </article>
         {% endfor %}
 
     </div>
